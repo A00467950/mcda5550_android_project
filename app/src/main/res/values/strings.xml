@@ -13,4 +13,6 @@
     <string name="search_button_label">SEARCH</string>
     <string name="clear_button_label">Clear</string>
     <string name="retrieve_from_search_pref">Retrieve From Shared Pref</string>
+    <string name="hotel_name">Hotel Name</string>
+    <string name="price">Price</string>
 </resources>
