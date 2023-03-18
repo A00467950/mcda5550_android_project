@@ -1,12 +1,12 @@
 <resources>
-    <string name="app_name">My Application</string>
+    <string name="app_name">Hotel Reservation</string>
     <string name="search_frag_title">Let\'s Book</string>
     <string name="check_in_date">Check In Date</string>
     <string name="check_out_date">Check Out Date</string>
     <string name="number_of_guests">Number of Guests</string>
     <string name="number_of_guests_hint">Guests Count</string>
     <string name="enter_your_name">Enter Your Name</string>
-    <string name="enter_yout_name_hint">Your Name</string>
+    <string name="enter_your_name_hint">Your Name</string>
     <string name="enter_your_address">Enter Your Address</string>
     <string name="enter_your_address_hint">Your Address</string>
     <string name="confirm_my_search">CONFIRM MY SEARCH</string>

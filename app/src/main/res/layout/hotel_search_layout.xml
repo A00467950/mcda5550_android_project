@@ -137,7 +137,7 @@
                 app:layout_constraintTop_toTopOf="@id/name_text_view"
                 app:layout_constraintBottom_toBottomOf="@id/name_text_view"
                 app:layout_constraintEnd_toEndOf="parent"
-                android:hint="@string/enter_yout_name_hint" />
+                android:hint="@string/enter_your_name_hint" />
 
             <TextView
                 android:id="@+id/address_text_view"

@@ -23,7 +23,6 @@ import java.util.Calendar;
 public class HotelSearchFragment extends Fragment {
     ConstraintLayout mainLayout;
     View view;
-    TextView titleTextView;
     TextView searchConfirmTextView;
     DatePicker checkInDatePicker;
     DatePicker checkOutDatePicker;
@@ -31,7 +30,6 @@ public class HotelSearchFragment extends Fragment {
     EditText guestAddress;
     EditText nameEditText;
     Button confirmSearchBtn;
-    EditText confirmSearchTextView;
 
     Button searchButton;
 
@@ -87,8 +85,10 @@ public class HotelSearchFragment extends Fragment {
                 String checkOutDate = getDateFromCalendar(checkOutDatePicker);
                 //Get input of guests count
                 String numberOfGuests = guestsCountEditText.getText().toString();
+                String guestName = nameEditText.getText().toString();
 
                 Bundle bundle = new Bundle();
+                bundle.putString("guest name", guestName);
                 bundle.putString("check in date", checkInDate);
                 bundle.putString("check out date", checkOutDate);
                 bundle.putString("number of guests", numberOfGuests);
@@ -104,7 +104,6 @@ public class HotelSearchFragment extends Fragment {
                 fragmentTransaction.commit();
             }
         });
-
     }
 
     private String getDateFromCalendar(DatePicker datePicker) {

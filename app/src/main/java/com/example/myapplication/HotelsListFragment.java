@@ -42,12 +42,13 @@ public class HotelsListFragment extends Fragment implements ItemClickListener {
         headingTextView = view.findViewById(R.id.heading_text_view);
         progressBar = view.findViewById(R.id.progress_bar);
 
+        String guestName = getArguments().getString("guest name");
         String checkInDate = getArguments().getString("check in date");
         String checkOutDate = getArguments().getString("check out date");
         String numberOfGuests = getArguments().getString("number of guests");
 
         //Set up the header
-        headingTextView.setText("Welcome user, displaying hotel for " + numberOfGuests + " guests staying from " + checkInDate +
+        headingTextView.setText("Welcome " + guestName + "!, displaying hotel for " + numberOfGuests + " guests staying from " + checkInDate +
                 " to " + checkOutDate);
 
 
