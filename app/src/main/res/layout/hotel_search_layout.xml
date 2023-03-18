@@ -16,13 +16,13 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/main_constraint_layout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
             <TextView
                 android:id="@+id/title_text_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Let's Book"
+                android:text="@string/search_frag_title"
                 android:textSize="30sp"
                 app:layout_constraintTop_toTopOf="parent"
                 android:layout_marginTop="20dp"
@@ -48,12 +48,12 @@
                 android:id="@+id/check_in_date_text_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Check In Date"
+                android:text="@string/check_in_date"
                 android:textSize="20sp"
                 app:layout_constraintTop_toBottomOf="@id/hotel_image"
                 app:layout_constraintStart_toStartOf="parent"
                 android:layout_marginTop="20dp"
-                android:layout_marginLeft="20dp"
+                android:layout_marginStart="20dp"
                 android:textColor="@color/black"
                 android:fontFamily="sans-serif"
                 android:textAlignment="textStart"
@@ -71,12 +71,12 @@
                 android:id="@+id/check_out_date_text_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Check Out Date"
+                android:text="@string/check_out_date"
                 android:textSize="20sp"
                 app:layout_constraintTop_toBottomOf="@id/checkin_date_picker_view"
                 app:layout_constraintStart_toStartOf="parent"
                 android:layout_marginTop="20dp"
-                android:layout_marginLeft="20dp"
+                android:layout_marginStart="20dp"
                 android:textColor="@color/black"
                 android:fontFamily="sans-serif"
                 android:textAlignment="textStart"
@@ -94,12 +94,12 @@
                 android:id="@+id/guests_text_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Number of Guests"
+                android:text="@string/number_of_guests"
                 android:textSize="20sp"
                 app:layout_constraintTop_toBottomOf="@id/checkout_date_picker_view"
                 app:layout_constraintStart_toStartOf="parent"
                 android:layout_marginTop="20dp"
-                android:layout_marginLeft="20dp"
+                android:layout_marginStart="20dp"
                 android:textColor="@color/black"
                 android:fontFamily="sans-serif"
                 android:textAlignment="textStart"
@@ -113,7 +113,7 @@
                 app:layout_constraintTop_toTopOf="@id/guests_text_view"
                 app:layout_constraintBottom_toBottomOf="@id/guests_text_view"
                 app:layout_constraintEnd_toEndOf="parent"
-                android:hint="Guests Count"
+                android:hint="@string/number_of_guests_hint"
                 android:inputType="number" />
 
             <TextView
@@ -122,7 +122,7 @@
                 android:layout_height="wrap_content"
                 app:layout_constraintStart_toStartOf="@id/guests_text_view"
                 app:layout_constraintTop_toBottomOf="@id/guests_text_view"
-                android:text="Enter Your Name"
+                android:text="@string/enter_your_name"
                 android:textSize="20sp"
                 android:textColor="@color/black"
                 android:fontFamily="sans-serif"
@@ -137,7 +137,7 @@
                 app:layout_constraintTop_toTopOf="@id/name_text_view"
                 app:layout_constraintBottom_toBottomOf="@id/name_text_view"
                 app:layout_constraintEnd_toEndOf="parent"
-                android:hint="Your Name" />
+                android:hint="@string/enter_yout_name_hint" />
 
             <TextView
                 android:id="@+id/address_text_view"
@@ -145,7 +145,7 @@
                 android:layout_height="wrap_content"
                 app:layout_constraintStart_toStartOf="@id/name_text_view"
                 app:layout_constraintTop_toBottomOf="@id/name_text_view"
-                android:text="Enter Your Address"
+                android:text="@string/enter_your_address"
                 android:textSize="20sp"
                 android:textColor="@color/black"
                 android:fontFamily="sans-serif"
@@ -160,7 +160,7 @@
                 app:layout_constraintTop_toTopOf="@id/address_text_view"
                 app:layout_constraintBottom_toBottomOf="@id/address_text_view"
                 app:layout_constraintEnd_toEndOf="parent"
-                android:hint="Your Address" />
+                android:hint="@string/enter_your_address_hint" />
 
             <TextView
                 android:id="@+id/search_confirm_text_view"
@@ -177,7 +177,7 @@
                 android:id="@+id/confirm_my_search_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="CONFIRM MY SEARCH"
+                android:text="@string/confirm_my_search"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 android:layout_marginTop="20dp"
@@ -187,7 +187,7 @@
                 android:id="@+id/search_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="SEARCH"
+                android:text="@string/search_button_label"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 android:layout_marginTop="20dp"
@@ -197,7 +197,7 @@
                 android:id="@+id/clear_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Clear"
+                android:text="@string/clear_button_label"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 android:layout_marginTop="20dp"
@@ -208,7 +208,7 @@
                 android:id="@+id/retrieve_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Retrieve From Shared Pref"
+                android:text="@string/retrieve_from_search_pref"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 android:layout_marginTop="20dp"
