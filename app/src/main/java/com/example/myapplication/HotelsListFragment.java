@@ -61,6 +61,8 @@ public class HotelsListFragment extends Fragment implements ItemClickListener {
         HotelListAdapter hotelListAdapter = new HotelListAdapter(getActivity(), hotelListData);
         recyclerView.setAdapter(hotelListAdapter);
 
+        hotelListAdapter.setClickListener(this);
+
         // getHotelsListsData();
 
         nextButton = view.findViewById(R.id.search_next_button);
@@ -72,7 +74,9 @@ public class HotelsListFragment extends Fragment implements ItemClickListener {
 
                 Bundle bundle = new Bundle();
                 bundle.putString("number of guests", numberOfGuests);
-                bundle.putString("guest detail", "The selected Guest Name");
+                bundle.putString("hotel name", "The selected Hotel");
+                bundle.putString("check in date", checkInDate);
+                bundle.putString("check out date", checkOutDate);
 
                 // set Fragment class Arguments
                 GuestEntryFragment guestEntryFragment = new GuestEntryFragment();

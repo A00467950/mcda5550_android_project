@@ -93,7 +93,6 @@ public class GuestEntryAdapter extends RecyclerView.Adapter<GuestEntryAdapter.Vi
         }
 
         public void onClick(View view){
-            Log.d("GuestEntryAdapter", "Guest details entry clicked!");
             if (clickListener != null)
                 clickListener.onClick(view, getAdapterPosition());
         }

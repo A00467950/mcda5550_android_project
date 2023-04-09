@@ -5,6 +5,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -20,6 +21,8 @@ import java.util.stream.IntStream;
 
 public class GuestEntryFragment extends Fragment implements ItemClickListener {
     View view;
+
+    TextView hotelSelectedTextView;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

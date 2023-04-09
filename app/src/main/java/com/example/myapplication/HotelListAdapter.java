@@ -17,6 +17,8 @@ public class HotelListAdapter extends RecyclerView.Adapter<HotelListAdapter.View
     private LayoutInflater layoutInflater;
     private ItemClickListener clickListener;
 
+    private int selectedHotel = RecyclerView.NO_POSITION;
+
     //Data gets passed in the constructor
     HotelListAdapter(Context context, List<HotelListData> hotelListData) {
         this.layoutInflater = LayoutInflater.from(context);
@@ -40,6 +42,24 @@ public class HotelListAdapter extends RecyclerView.Adapter<HotelListAdapter.View
         holder.hotelName.setText(hotelName);
         holder.hotelAvailability.setText(hotelAvailability);
         holder.hotelPrice.setText(hotelPrice);
+
+        if(selectedHotel == position){
+            holder.itemView.setBackgroundResource(R.drawable.hotel_selected);
+        } else {
+            holder.itemView.setBackgroundResource(0);
+        }
+
+        holder.itemView.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                int previousSelectedHotel = selectedHotel;
+
+                selectedHotel = holder.getAdapterPosition();
+
+                notifyItemChanged(previousSelectedHotel);
+                notifyItemChanged(selectedHotel);
+            }
+        });
     }
 
     @Override
