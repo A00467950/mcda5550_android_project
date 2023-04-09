@@ -5,6 +5,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -25,6 +26,8 @@ public class HotelsListFragment extends Fragment implements ItemClickListener {
     TextView headingTextView;
     ProgressBar progressBar;
     List<HotelListData> userListResponseData;
+
+    Button nextButton;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -51,7 +54,6 @@ public class HotelsListFragment extends Fragment implements ItemClickListener {
         headingTextView.setText("Welcome " + guestName + "!, displaying hotel for " + numberOfGuests + " guests staying from " + checkInDate +
                 " to " + checkOutDate);
 
-
         // Set up the RecyclerView
         ArrayList<HotelListData> hotelListData = initHotelListData();
         RecyclerView recyclerView = view.findViewById(R.id.hotel_list_recyclerView);
@@ -60,6 +62,28 @@ public class HotelsListFragment extends Fragment implements ItemClickListener {
         recyclerView.setAdapter(hotelListAdapter);
 
         // getHotelsListsData();
+
+        nextButton = view.findViewById(R.id.search_next_button);
+
+        nextButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                Log.d("NextButtonClick", "Next button Clicked after search");
+
+                Bundle bundle = new Bundle();
+                bundle.putString("guest detail", "The selected Guest Name");
+
+                // set Fragment class Arguments
+                GuestEntryFragment guestEntryFragment = new GuestEntryFragment();
+                guestEntryFragment.setArguments(bundle);
+
+                FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+                fragmentTransaction.replace(R.id.main_layout, guestEntryFragment);
+                fragmentTransaction.remove(HotelsListFragment.this);
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
+            }
+        });
     }
 
     public ArrayList<HotelListData> initHotelListData() {
