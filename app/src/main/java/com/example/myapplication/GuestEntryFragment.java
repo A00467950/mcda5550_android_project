@@ -33,7 +33,24 @@ public class GuestEntryFragment extends Fragment implements ItemClickListener {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState){
         super.onViewCreated(view, savedInstanceState);
 
-        int guestCount = Integer.parseInt(getArguments().getString("number of guests"));
+        hotelSelectedTextView = view.findViewById(R.id.hotel_select_text_view);
+        String guests = getArguments().getString("number of guests");
+        String hotelName = getArguments().getString("hotel name");
+        String checkInDate = getArguments().getString("check in date");
+        String checkOutDate = getArguments().getString("check out date");
+
+        Log.d("GuestEntryAdapter", "The start date is: " + checkInDate);
+
+        String bookingMessage = String.format("Booking from: %s to %s form %s guests in Hotel: %s",
+                checkInDate, checkOutDate, guests, hotelName);
+
+        hotelSelectedTextView.setText(bookingMessage);
+
+        int guestCount = 1;
+
+        if(guests != null && !"".equals(guests)){
+            guestCount = Integer.parseInt(guests);
+        }
 
         List<GuestDetail> guestListData = initGuestDetails(guestCount);
 
