@@ -13,6 +13,10 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class GuestEntryFragment extends Fragment implements ItemClickListener {
     View view;
@@ -29,16 +33,25 @@ public class GuestEntryFragment extends Fragment implements ItemClickListener {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState){
         super.onViewCreated(view, savedInstanceState);
 
-        // Set up the RecyclerView
-        ArrayList<HotelListData> guestListData = new ArrayList<>();
+        int guestCount = Integer.parseInt(getArguments().getString("number of guests"));
+
+        List<GuestDetail> guestListData = initGuestDetails(guestCount);
+
         RecyclerView recyclerView = view.findViewById(R.id.guest_list_recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        HotelListAdapter guestListAdapter = new HotelListAdapter(getActivity(), guestListData);
+        GuestEntryAdapter guestListAdapter = new GuestEntryAdapter(getActivity(), guestListData);
         recyclerView.setAdapter(guestListAdapter);
     }
 
     @Override
     public void onClick(View view, int position) {
         Log.d("GuestDetailsEntry", "Item clicked");
+    }
+
+    public List<GuestDetail> initGuestDetails(int guestCount) {
+        List<GuestDetail> guests = IntStream.range(0, guestCount)
+                .mapToObj(i -> new GuestDetail()).collect(Collectors.toList());
+
+        return guests;
     }
 }

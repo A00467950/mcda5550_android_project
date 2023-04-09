@@ -71,6 +71,7 @@ public class HotelsListFragment extends Fragment implements ItemClickListener {
                 Log.d("NextButtonClick", "Next button Clicked after search");
 
                 Bundle bundle = new Bundle();
+                bundle.putString("number of guests", numberOfGuests);
                 bundle.putString("guest detail", "The selected Guest Name");
 
                 // set Fragment class Arguments
