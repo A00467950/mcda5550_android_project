@@ -78,9 +78,10 @@ public class HotelsListFragment extends Fragment implements ItemClickListener {
                 guestEntryFragment.setArguments(bundle);
 
                 FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
-                fragmentTransaction.replace(R.id.main_layout, guestEntryFragment);
+                fragmentTransaction.add(guestEntryFragment, "GUEST_ENTRY_FRAGMENT");
                 fragmentTransaction.remove(HotelsListFragment.this);
-                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.replace(R.id.main_layout, guestEntryFragment);
+                fragmentTransaction.addToBackStack("GUEST_ENTRY_FRAGMENT");
                 fragmentTransaction.commit();
             }
         });
