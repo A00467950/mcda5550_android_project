@@ -5,11 +5,13 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -19,10 +21,14 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
+import retrofit2.Call;
+
 public class GuestEntryFragment extends Fragment implements ItemClickListener {
     View view;
 
     TextView hotelSelectedTextView;
+
+    Button book;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -61,6 +67,39 @@ public class GuestEntryFragment extends Fragment implements ItemClickListener {
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         GuestEntryAdapter guestListAdapter = new GuestEntryAdapter(getActivity(), guestListData);
         recyclerView.setAdapter(guestListAdapter);
+
+        book = view.findViewById(R.id.book_button);
+
+        book.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                HotelsRestAPI api = RestAPI.getClient();
+                BookingDetails hotel = new BookingDetails("Selected Hotel");
+                Call<String> bookingCall = api.book(hotel);
+
+                String bookingId = null;
+                try {
+                    bookingId = bookingCall.execute().body();
+                } catch (Exception exp){
+                    exp.printStackTrace();
+                }
+
+                Log.d("GuestEntryFragment", "The booking id is: " + bookingId);
+
+                Bundle bundle = new Bundle();
+                bundle.putString("bookingId", bookingId);
+
+                BookingConfirmFragment bookingConfirmFragment = new BookingConfirmFragment();
+                bookingConfirmFragment.setArguments(bundle);
+
+                FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+                fragmentTransaction.add(bookingConfirmFragment, "BOOKING_CONFIRM_FRAGMENT");
+                fragmentTransaction.remove(GuestEntryFragment.this);
+                fragmentTransaction.replace(R.id.main_layout, bookingConfirmFragment);
+                fragmentTransaction.addToBackStack("BOOKING_CONFIRM_FRAGMENT");
+                fragmentTransaction.commit();
+            }
+        });
     }
 
     @Override
