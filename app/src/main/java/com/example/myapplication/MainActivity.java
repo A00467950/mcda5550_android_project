@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
+import android.os.StrictMode;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -20,5 +21,8 @@ public class MainActivity extends AppCompatActivity {
 
         // Complete the changes added above
         fragmentTransaction.commit();
+
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
     }
 }

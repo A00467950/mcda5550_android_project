@@ -16,9 +16,14 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import retrofit2.Callback;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+
+import retrofit2.Call;
 
 public class HotelsListFragment extends Fragment implements ItemClickListener {
 
@@ -57,7 +62,7 @@ public class HotelsListFragment extends Fragment implements ItemClickListener {
                 " to " + checkOutDate);
 
         // Set up the RecyclerView
-        ArrayList<HotelListData> hotelListData = initHotelListData();
+        List<HotelListData> hotelListData = getAvailableHotels();
         RecyclerView recyclerView = view.findViewById(R.id.hotel_list_recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         HotelListAdapter hotelListAdapter = new HotelListAdapter(getActivity(), hotelListData);
@@ -106,6 +111,22 @@ public class HotelsListFragment extends Fragment implements ItemClickListener {
         list.add(new HotelListData("San Jones", "250$", "false"));
 
         return list;
+    }
+
+    public List<HotelListData> getAvailableHotels() {
+        HotelsRestAPI api = RestAPI.getClient();
+
+        Call<List<HotelListData>> hotelsCall = api.getHotels();
+
+        List<HotelListData> hotels = Collections.emptyList();
+
+        try {
+            hotels = hotelsCall.execute().body();
+        } catch (Exception exp){
+            exp.printStackTrace();
+        }
+
+        return  hotels;
     }
 
     private void setupRecyclerView() {
