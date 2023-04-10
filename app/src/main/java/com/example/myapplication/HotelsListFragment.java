@@ -24,6 +24,7 @@ import java.util.Collections;
 import java.util.List;
 
 import retrofit2.Call;
+import retrofit2.Response;
 
 public class HotelsListFragment extends Fragment implements ItemClickListener {
 
@@ -63,6 +64,7 @@ public class HotelsListFragment extends Fragment implements ItemClickListener {
 
         // Set up the RecyclerView
         List<HotelListData> hotelListData = getAvailableHotels();
+
         RecyclerView recyclerView = view.findViewById(R.id.hotel_list_recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         HotelListAdapter hotelListAdapter = new HotelListAdapter(getActivity(), hotelListData);
