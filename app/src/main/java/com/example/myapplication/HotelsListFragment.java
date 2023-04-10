@@ -29,6 +29,8 @@ public class HotelsListFragment extends Fragment implements ItemClickListener {
 
     Button nextButton;
 
+    Bundle bundle = new Bundle();
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -72,9 +74,8 @@ public class HotelsListFragment extends Fragment implements ItemClickListener {
             public void onClick(View view) {
                 Log.d("NextButtonClick", "Next button Clicked after search");
 
-                Bundle bundle = new Bundle();
                 bundle.putString("number of guests", numberOfGuests);
-                bundle.putString("hotel name", "The selected Hotel");
+                //bundle.putString("hotel name", selectedHotel);
                 bundle.putString("check in date", checkInDate);
                 bundle.putString("check out date", checkOutDate);
 
@@ -120,7 +121,9 @@ public class HotelsListFragment extends Fragment implements ItemClickListener {
 
     @Override
     public void onClick(View view, int position) {
-        Log.d("HotelSelected", "Hotel selected from search list");
+        String selectedHotel = initHotelListData().get(position).getHotel_name();
+        this.bundle.putString("hotel name", selectedHotel);
+        Log.d("HotelSelected", String.format("Hotel: %s selected from search list", selectedHotel));
     }
 }
 

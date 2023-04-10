@@ -1,6 +1,7 @@
 package com.example.myapplication;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -58,8 +59,14 @@ public class HotelListAdapter extends RecyclerView.Adapter<HotelListAdapter.View
 
                 notifyItemChanged(previousSelectedHotel);
                 notifyItemChanged(selectedHotel);
+
+                holder.onClick(view);
+
+                Log.d("HotelListAdapter", "Selected Hotel: " + selectedHotel);
             }
         });
+
+
     }
 
     @Override
@@ -92,8 +99,12 @@ public class HotelListAdapter extends RecyclerView.Adapter<HotelListAdapter.View
 
         @Override
         public void onClick(View view) {
-            if (clickListener != null)
+            if (clickListener != null) {
+                Log.d("HotelListAdapter", "Item selected: " + getAdapterPosition());
                 clickListener.onClick(view, getAdapterPosition());
+            } else {
+                Log.d("HotelListAdapter", "Click listener is null");
+            }
         }
     }
 

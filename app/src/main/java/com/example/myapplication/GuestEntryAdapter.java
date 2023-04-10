@@ -68,8 +68,6 @@ public class GuestEntryAdapter extends RecyclerView.Adapter<GuestEntryAdapter.Vi
             @Override
             public void afterTextChanged(Editable editable) {}
         });
-
-        Log.d("GuestEntryAdapter", "Guest Name: " + guestName);
     }
 
     public int getItemCount(){
